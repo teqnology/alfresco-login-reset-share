@@ -46,7 +46,7 @@
  }
  html .login-wrap .form input[type="text"],
  html .login-wrap .form input[type="password"],
- html .login-wrap .form button {
+ html .login-wrap .form input[type="submit"] {
    width: 80%;
    margin-left: 10%;
    margin-bottom: 25px;
@@ -73,8 +73,8 @@
  html .login-wrap .form a.sa pas {
    padding-bottom: 10px;
  }
- html .login-wrap .form #btn-login {
-   background: #e74c3c;
+ html .login-wrap .form input[type="submit"] {
+   background: #4d4d4d;
    border: none;
    color: white;
    font-size: 18px;
@@ -82,10 +82,10 @@
    cursor: pointer;
    transition: box-shadow .4s ease;
  }
- html .login-wrap .form #btn-login:hover {
+ html .login-wrap .form input[type="submit"]:hover {
    box-shadow: 1px 1px 5px #555;
  }
- html .login-wrap .form #btn-login:active {
+ html .login-wrap .form input[type="submit"]:active {
    box-shadow: 1px 1px 7px #222;
  }
  html .login-wrap:after {
