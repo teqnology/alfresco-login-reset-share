@@ -10,12 +10,13 @@
     <body>
 
         <div class="login-wrap">
-            <h2>Login</h2>
+            <img class="alfresco-logo" src="${url.context}/images/alfresco.png">
             <form class="form" id="loginform" accept-charset="UTF-8" method="post" action="${url.context}/page/dologin">
                 Username: <input type="text" id="username" name="username"/><br>
                 Password: <input type="password" id="password" name="password"/><br>
                 <input type="submit" id="btn-login"/>
             </form>
+            <img class="androgogic-logo" src="${url.context}/images/androgogic.gif">
         </div>
 
     </body>

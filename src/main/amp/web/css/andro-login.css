@@ -99,3 +99,13 @@
    height: 5px;
    border-radius: 5px 5px 0 0;
  }
+ .androgogic-logo {
+   width: 30%;
+   position: relative;
+   left: 35%;
+}
+ .alfresco-logo{
+   left: 12%;
+   position: relative;
+   width: 75%;
+ }
