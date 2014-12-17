@@ -34,7 +34,8 @@
                 <div class="card-panel">
 
                     <div class="row">
-                        <img class="alfresco-logo" src="/share/img/alfresco.png">
+                        <img class="androgogic-logo" src="${url.context}/img/androgogic.gif">
+                        <!--<img class="alfresco-logo" src="/share/img/alfresco.png">-->
                     </div>
 
                     <div class="row">
@@ -60,12 +61,12 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <img class="androgogic-logo" src="${url.context}/img/androgogic.gif">
-                            </div>
-
                         </form>
 
+                    </div>
+
+                    <div class="row">
+                        <p>Alfresco ${srv.data.edition}, version ${srv.data.version}</p>
                     </div>
 
                 </div>
@@ -74,7 +75,19 @@
 
                     <div class="col s12 m12 l12">
 
-                        <p></p>
+                        <p><a class="waves-effect btn-flat modal-trigger" href="#modal1">Forgotten Password?</a></p>
+
+                        <div id="modal1" class="modal">
+                            <h4 id="formResultH">Password Reset</h4>
+                            <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
+                                <div id="formResult" class="input-field col s12">
+                                    <input id="emailForgotten" type="text" name="email" required>
+                                    <label for="emailForgotten">Email or Username</label>
+                                </div>
+                                <button id="formBtn" class="waves-effect btn-flat modal_close" type="submit" name="action">Confirm</button>
+                            </form>
+                            <p class="flow-text" id="formResultP"></p>
+                        </div>
 
                     </div>
 
@@ -101,6 +114,34 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${url.context}/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.modal-trigger').leanModal();
 
+            $( "#resetP" ).submit(function( event ) {
+                event.preventDefault();
+                var emailF = $('#emailForgotten').val();
+                $.ajax({
+                   type: "POST",
+                   url: "/share/proxy/alfresco-noauth/andro/base/reset-password",
+                   data: JSON.stringify({ email: emailF }),
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function(result) {
+                        $('#formResultP').text("Check your email.");
+                        $('#formResultH').text("Password reset - Success");
+                        $('#resetP').remove();
+                   },
+                   error: function(xhr, status, error) {
+                      var err = eval("(" + xhr.responseText + ")");
+                        $('#formResultP').text(err.message + ", please reload this page.");
+                        $('#formResultH').text("Password reset - Failure");
+                        $('#resetP').remove();
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 </html>
