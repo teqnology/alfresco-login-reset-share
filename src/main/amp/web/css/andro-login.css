@@ -21,22 +21,41 @@ html, body {
     color: #888;
 }
 
-.androgogic-logo {
-    width: 30%;
-    position: relative;
+html {
+    height: 100%;
 }
 
-.right {
-    text-align: right;
+.container {
+ height: 100%;
 }
+.androgogic-logo {
+    width: 30%;
+    height: auto;
+}
+
+/*.right {
+    text-align: right;
+}*/
 
 .text-center {
     text-align: center;
 }
 
-/* Footer */
+.clearfix{
+    clear:both;
+}
+/* Flexbox Sticky Footer */
 
-footer {
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column
+}
+
+.container{
+    flex: 1;
+}
+/*footer {
     color: #888;
     background: #EEE;
     border-top: 1px solid #EEE;
@@ -48,4 +67,4 @@ footer {
     bottom: 0;
     height: 1rem;
     font-size:.7rem;
-}
+}*/
