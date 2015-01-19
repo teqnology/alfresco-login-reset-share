@@ -113,9 +113,9 @@
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5>Links</h5>
-                    <li><a class="grey-text" href="#!">Link 1</a></li>
-                    <li><a class="grey-text" href="#!">Link 2</a></li>
-                    <li><a class="grey-text" href="#!">Link 3</a></li>
+                    <li><a class="grey-text" href="http://docs.alfresco.com/" target="_blank">Online Documentation</a></li>
+                    <li><a class="grey-text" href="/alfresco/webdav" target="_blank">Alfresco WebDav</a></li>
+                    <li><a class="grey-text" href="/alfresco/s/index" target="_blank">Alfresco WebScripts Home (admins only)</a></li>
                 </div>
             </div>
         </div>
