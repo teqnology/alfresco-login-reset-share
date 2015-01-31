@@ -132,7 +132,14 @@
     <script src="${url.context}/js/materialize.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('.modal-trigger').leanModal();
+
+            $(".modal-trigger").leanModal({
+                dismissible: true,
+                opacity: .5,
+                in_duration: 300,
+                out_duration: 200,
+                complete: function() { emptyDiv("#formResultP"); }
+            });
 
             $( "#resetP" ).submit(function( event ) {
                 event.preventDefault();
@@ -145,17 +152,17 @@
                    dataType: "json",
                    success: function(result) {
                         $('#formResultP').text("Check your email.");
-                        $('#formResultH').text("Password reset - Success");
-                        $('#resetP').remove();
                    },
                    error: function(xhr, status, error) {
                       var err = eval("(" + xhr.responseText + ")");
                         $('#formResultP').text(err.message);
-                        $('#formResultH').text("Password reset - Failure");
-                        $('#resetP').remove();
                     }
                 });
             });
+
+            function emptyDiv(divElement){
+                $( divElement ).empty();
+            }
 
             function getUrlParameter(sParam) {
                 var sPageURL = window.location.search.substring(1);
