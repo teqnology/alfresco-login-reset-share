@@ -54,6 +54,9 @@ body {
     background-color: #fff;
 }
 
+.modal {
+    word-wrap: break-word;
+}
 /*.container{
     flex: 1;
     -ms-flex: 1 1 0;
