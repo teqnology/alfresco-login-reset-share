@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="grey lighten-2">
 <head>
     <title>Androgogic | Alfresco Login</title>
 
@@ -109,7 +109,7 @@
             <div class="row">
                 <div class="col l6 s12">
                     <h5><img class="responsive-img" src="${url.context}/res/themes/default/images/app-logo-48.png"> Alfresco ${srv.data.edition}</h5>
-                    <p>version ${srv.data.version}</p>
+                    <p>Version ${srv.data.version}</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5>Links</h5>
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright grey lighten-2">
             <div class="container">
                 <p class="grey-text left">© 2005-2014 <a href="http://www.alfresco.com" title="Alfresco" target="_blank">Alfresco Software Inc.</a> | All Rights Reserved.</p>
                 <p class="grey-text right">© 2014 <a href="http://www.androgogic.com" title="Androgogic Website" target="_blank"><span>androgogic pty ltd.</span></a> | all rights reserved

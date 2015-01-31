@@ -28,6 +28,7 @@ html {
 .container {
  height: 100%;
 }
+
 .androgogic-logo {
     width: 30%;
     height: auto;
@@ -47,13 +48,21 @@ html {
 /* Flexbox Sticky Footer */
 
 body {
-    display: flex;
+    /*display: flex;
     min-height: 100vh;
-    flex-direction: column
+    flex-direction: column;*/
+    background-color: #fff;
 }
 
-.container{
+/*.container{
     flex: 1;
+    -ms-flex: 1 1 0;
+}*/
+
+footer {
+    height: auto;
+    position: relative;
+    border: none;
 }
 /*footer {
     color: #888;
