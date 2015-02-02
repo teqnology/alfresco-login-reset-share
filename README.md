@@ -412,6 +412,6 @@ The extension works in the following, simplifed way:
 - The user clicks on the link in the email and is prompted with a form with two inputs: 'new password' and 'repeat new password'.
 - The page saves in two javascript objects the `token` and the `username` from the url arguments
 - Once the form is submitted, the system checks if the saved token matches the one saved in the person object (obtained through the username saved earlier).
-- If the token and the username are the ones expected, the new password is saved.
+- If the token and the username are the ones expected, the new password is being saved.
 
 > Written with [StackEdit](https://stackedit.io/).
