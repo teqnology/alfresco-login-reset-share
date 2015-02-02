@@ -46,14 +46,14 @@
 
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
-                                    <input id="username" name="username" type="text" autocomplete="off" required>
+                                    <input id="username" name="username" type="text" required>
                                     <label for="username">Username</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
-                                    <input id="password" name="password" type="password" autocomplete="off" required>
+                                    <input id="password" name="password" type="password" required>
                                     <label for="password">Password</label>
                                 </div>
                             </div>
@@ -74,17 +74,20 @@
 
                     <div class="col s12 m12 l12">
 
-                        <p><a class="waves-effect btn-flat modal-trigger" href="#modal1">Forgotten Password?</a></p>
+                        <p><a class="waves-effect btn-flat modal-trigger" href="#forgotten-password">Forgotten Password?</a></p>
 
-                        <div id="modal1" class="modal">
+                        <div id="forgotten-password" class="modal">
                             <h4 id="formResultH">Password Reset</h4>
                             <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
                                 <div id="formResult" class="input-field col s12">
                                     <input id="emailForgotten" type="text" name="email" required>
                                     <label for="emailForgotten">Email or Username</label>
                                 </div>
-                                <button id="formBtn" class="waves-effect btn-flat modal_close" type="submit" name="action">Confirm</button>
+                                <button id="formBtn" class="waves-effect waves-light btn modal_close" type="submit" name="action">Confirm</button>
                             </form>
+                            <div id="loading" class="progress" style="visibility:hidden;">
+                                <div class="indeterminate"></div>
+                            </div>
                             <p class="flow-text" id="formResultP"></p>
                         </div>
 
@@ -93,6 +96,14 @@
                             <p class="flow-text">Your authentication details have not been recognized or Alfresco may not be available at this time.</p>
                             <a href="#" class="waves-effect btn-flat modal-close">Close</a>
                         </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col s12 m12 l12">
 
                     </div>
 
@@ -131,6 +142,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${url.context}/js/materialize.min.js"></script>
     <script>
+
+        $( document ).ajaxStart(function() {
+          $( "#loading" ).show();
+        });
+
         $(document).ready(function(){
 
             $(".modal-trigger").leanModal({
