@@ -17,6 +17,24 @@ Andro Custom Login Share
 
 # Components
 
+## Alfresco Custom Theme
+
+The theme files are located in:
+
+- `src/main/amp/config/alfresco/web-extension/site-data/themes` where the theme xml file is defined. The default one is called `androTheme.xml`. Use a similar one for a new theme deployment.
+- `src/main/amp/web/themes/{nameAsXmlThemeFile}` (eg. `androTheme`) where all the theme's assets are stored. The structure reflects the original theme:
+    - `/images` where theme images are stored.
+    - `/yui/assets` where different ui components are stored
+    - `/presentation.css` the main theme styling theme
+    
+### Login Theme
+
+The login is no longer managed by the theme customization files. Now if the login page needs a restyling to reflect custom theme's UI, the files are located in:
+
+- `src/main/amp/config/alfresco/templates/com/androgogic/base/login` where are stored `andro-login.ftl` and `andro-reset-password-id.ftl` (login and reset password pages)
+- `src/main/amp/web/css/` where are stored styling files. Each file has the same name as the page where it's recalled (eg `andro-login.css` and `andro-login.ftl`). Remember that `andro-login.css` overrides the `materialize.min.css` styling rules.
+- `src/main/amp/web/js/` where are stored javascript files. Each file has the same name as the page where it's recalled (eg `andro-login.js` and `andro-login.ftl`).
+
 ## Alfresco Explorer Web Scripts group `/andro/base`
 
 ### `reset-password` Andro Base web script 
