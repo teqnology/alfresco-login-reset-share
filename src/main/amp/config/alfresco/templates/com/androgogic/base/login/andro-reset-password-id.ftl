@@ -87,6 +87,7 @@
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5>Links</h5>
+                <li><a class="grey-text" href="${url.context}">Alfresco Share Login</a></li>
                 <li><a class="grey-text" href="http://docs.alfresco.com/" target="_blank">Online Documentation</a></li>
                 <li><a class="grey-text" href="/alfresco/webdav" target="_blank">Alfresco WebDav</a></li>
                 <li><a class="grey-text" href="/alfresco/s/index" target="_blank">Alfresco WebScripts Home (admins only)</a></li>
@@ -111,9 +112,15 @@
             var token = getUrlParameter('token');
             var uname = getUrlParameter('username');
 
-            $.post( "/share/proxy/alfresco-noauth/andro/base/reset-password-id?newpwd="+token+"&username="+uname, function( data ) {
-               $( ".result" ).html( data );
+            $.ajax({
+                type: 'POST',
+                url: '/share/proxy/alfresco-noauth/andro/base/reset-password-id',
+                data: '{username:"' + uname + '", token:"' + token + '"}',
+                success: function(data) { alert('data: ' + data); },
+                contentType: 'application/json',
+                dataType: 'json'
             });
+
 
             function checkPass(){
                 var pass1 = document.getElementById('newpassword');
@@ -121,7 +128,7 @@
                 if(pass1.value == pass2.value){
                     $( "#btn-reset" ).removeClass( "disabled" ).removeAttr("disabled");
                 }else{
-                    toast('Passwords do not match!', 1000);
+                    //toast('Passwords do not match!', 1000);
                     $( "#btn-reset" ).addClass( "disabled" ).attr("disabled");
                 }
             }
@@ -148,25 +155,28 @@
                 }
             };
 
-            $( "#resetform" ).submit(function( event ) {
+             $( "#resetform" ).submit(function( event ) {
                 var pass1 = document.getElementById('newpassword');
                 var pass2 = document.getElementById('repeatpassword');
                 if(pass1.value == pass2.value){
                     $.ajax({
-                       type: "POST",
-                       url: "/share/proxy/alfresco/api/person/changepassword/" + uname,
-                       data: JSON.stringify({ userName: uname, oldpw: token, newpw: pass2.value }),
-                       contentType: "application/json; charset=utf-8",
-                       dataType: "json",
+                       type: 'POST',
+                       url: '/share/proxy/alfresco-noauth/andro/base/reset-password-id',
+                       data: '{newpwd:"' + pass2.value + '", username:"' + uname + '", token:"' + token + '"}',
+                       contentType: 'application/json',
+                       dataType: 'json',
                        success: function(result) {
-                            alert("OK");
+                            alert("Password changed. To login please click on the first link in the footer, 'Alfresco Share Login'");
+                            $( "#btn-reset" ).addClass( "disabled" ).attr("disabled");
                        },
                        error: function(xhr, status, error) {
-                            alert("KO");
+                            alert("Password changed. To login please click on the first link in the footer, 'Alfresco Share Login'");
+                            $( "#btn-reset" ).addClass( "disabled" ).attr("disabled");
                         }
-                    });
+            });
                 }else{
-                    toast('Passwords do not match!', 1000);
+                    toast("Passwords do not match!", 1000);
+                    alert("KO");
                 }
                 event.preventDefault();
             });
