@@ -41,7 +41,7 @@
                 <div class="row">
                     <form id="resetform" class="col s12 m12 l12" accept-charset="UTF-8" method="post" action="#">
 
-                        <input type="hidden" name="success" value="/share/page/">
+                        <input type="hidden" name="success" value="${url.url}">
                         <input type="hidden" name="failure" value="/share/page/?error=true">
 
                         <input type="hidden" name="oldpassword" value="oldpassword">

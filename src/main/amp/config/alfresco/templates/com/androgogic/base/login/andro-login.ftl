@@ -41,7 +41,7 @@
                     <div class="row">
                         <form id="loginform" class="col s12 m12 l12" accept-charset="UTF-8" method="post" action="${url.context}/page/dologin">
 
-                            <input type="hidden" name="success" value="/share/page/">
+                            <input type="hidden" name="success" value="${url.url}">
                             <input type="hidden" name="failure" value="/share/page/?error=true">
 
                             <div class="row">
