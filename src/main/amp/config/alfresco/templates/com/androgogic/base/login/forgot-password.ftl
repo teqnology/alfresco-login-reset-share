@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="grey lighten-2">
+
 <head>
-    <title>Alfresco Login</title>
+    <title>Alfresco Forgot Password</title>
 
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
@@ -10,20 +11,21 @@
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Raleway:200,600" />
 
 </head>
+
 <body>
 
-    <header>
-        <div class="navbar-fixed">
-            <nav class="grey lighten-4">
-                <div class="container">
-                    <div class="nav-wrapper">
-                        <a href="${url.context}" class="brand-logo"><img src="${url.context}/res/themes/default/images/logo.png"></a>
-                        <a class="right hide-on-med-and-down grey-text text-darken-4" href="${url.context}"> Alfresco ${srv.data.edition} - Version ${srv.data.version}</a>
-                    </div>
+<header>
+    <div class="navbar-fixed">
+        <nav class="grey lighten-4">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="${url.context}" class="brand-logo"><img src="${url.context}/res/themes/default/images/logo.png"></a>
+                    <a class="right hide-on-med-and-down grey-text text-darken-4" href="${url.context}"> Alfresco ${srv.data.edition} - Version ${srv.data.version}</a>
                 </div>
-            </nav>
-        </div>
-    </header>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <main>
         <div class="container">
@@ -42,65 +44,34 @@
                     <div class="card z-depth-1">
                         <div class="card-content">
                             <div class="row">
-                                <span class="card-title grey-text text-darken-4">Log In</span>
+                                <span id="formResultH" class="card-title grey-text text-darken-4">Forgot your password?</span>
                             </div>
                             <div class="row">
                                 <div class="divider blue"></div>
                             </div>
+                            <p>We can send you details on how to reset it. Please enter your email address or the username you use to log into your account.</p>
                             <div class="row">
-                                <form id="loginform" class="col s12 m12 l12" accept-charset="UTF-8" method="post" action="${url.context}/page/dologin">
-                                    <input type="hidden" name="success" value="${url.url}">
-                                    <input type="hidden" name="failure" value="/share/page/?error=true">
+                                <form id="resetP" action="${url.context}/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
                                     <div class="row">
-                                        <div class="input-field col s12 m12 l12">
-                                            <input id="username" name="username" type="text" required>
-                                            <label for="username">Username</label>
+                                        <div id="formResult" class="input-field col s12">
+                                            <input id="emailForgotten" type="text" name="email" required>
+                                            <label for="emailForgotten">Email or Username</label>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m12 l12">
-                                            <input id="password" name="password" type="password" required>
-                                            <label for="password">Password</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m12 l12">
-                                            <button class="btn waves-effect waves-light blue" type="submit" id="btn-login" name="action">Login</button>
-                                        </div>
+                                    <div class="col l12 s12 m12">
+                                        <button id="formBtn" class="btn waves-effect waves-light blue" type="submit" name="action">Send Instructions</button>
                                     </div>
                                 </form>
+                                <div id="loading" class="progress blue lighten-1" style="visibility:hidden;">
+                                    <div class="indeterminate blue lighten-4"></div>
+                                </div>
+                                <p class="flow-text" id="formResultP"></p>
                             </div>
                         </div>
                         <div class="card-action">
                             <div class="row">
                                 <div class="col s12 m12 l12">
-                                    <a class="waves-effect btn grey lighten-5 grey-text text-darken-4" href="${url.context}/page/forgot-password">Forgot Password?</a>
-
-                                    <div id="forgotten-password" class="modal">
-                                        <h4 id="formResultH">Password Reset</h4>
-                                        <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
-                                            <div id="formResult" class="input-field col s12">
-                                                <input id="emailForgotten" type="text" name="email" required>
-                                                <label for="emailForgotten">Email or Username</label>
-                                            </div>
-                                            <button id="formBtn" class="waves-effect waves-light btn modal_close grey" type="submit" name="action">Confirm</button>
-                                        </form>
-                                        <div id="loading" class="progress" style="visibility:hidden;">
-                                            <div class="indeterminate"></div>
-                                        </div>
-                                        <p class="flow-text" id="formResultP"></p>
-                                    </div>
-
-                                    <div id="auth-error-modal" class="modal">
-                                        <div class="card-content">
-                                            <span class="card-title grey-text text-darken-4">Authentication Error</span>
-                                            <p class="flow-text">Your authentication details have not been recognized or Alfresco may not be available at this time.</p>
-                                        </div>
-                                        <div class="card-action">
-                                            <a href="#" class="waves-effect btn-flat grey-text text-darken-4 modal-close">Close</a>
-                                        </div>
-                                    </div>
-
+                                    <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -202,13 +173,9 @@
                 }
             };
 
-            var error = getUrlParameter('error');
-            if (error == "true") {
-                 $('#auth-error-modal').openModal();
-            }
-
-
         });
     </script>
+
 </body>
+
 </html>
