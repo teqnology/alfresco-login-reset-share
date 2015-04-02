@@ -54,7 +54,7 @@ body {
  color: #2196f3;
 }
 /* label focus color */
-.input-field input[type=text]:focus + label, .input-field input[type=pasword]:focus + label {
+.input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
  color: #2196f3;
 }
 /* label underline focus color */

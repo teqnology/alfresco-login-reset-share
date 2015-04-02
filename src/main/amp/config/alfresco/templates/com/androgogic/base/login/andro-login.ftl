@@ -41,68 +41,54 @@
                 <div class="col l6 offset-l3 s12 m12">
                     <div class="card z-depth-1">
                         <div class="card-content">
-                            <div class="row">
-                                <span class="card-title grey-text text-darken-4">Log In</span>
-                            </div>
-                            <div class="row">
-                                <div class="divider blue"></div>
-                            </div>
-                            <div class="row">
-                                <form id="loginform" class="col s12 m12 l12" accept-charset="UTF-8" method="post" action="${url.context}/page/dologin">
-                                    <input type="hidden" name="success" value="${url.url}">
-                                    <input type="hidden" name="failure" value="/share/page/?error=true">
-                                    <div class="row">
-                                        <div class="input-field col s12 m12 l12">
-                                            <input id="username" name="username" type="text" required>
-                                            <label for="username">Username</label>
-                                        </div>
+                            <span class="card-title grey-text text-darken-4">Log In</span>
+                            <div class="divider blue"></div>
+                            <form id="loginform" accept-charset="UTF-8" method="post" action="${url.context}/page/dologin">
+                                <input type="hidden" name="success" value="${url.url}">
+                                <input type="hidden" name="failure" value="/share/page/?error=true">
+                                <div class="row">
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="username" name="username" type="text" required>
+                                        <label for="username">Username</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m12 l12">
-                                            <input id="password" name="password" type="password" required>
-                                            <label for="password">Password</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="password" name="password" type="password" required>
+                                        <label for="password">Password</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col s12 m12 l12">
-                                            <button class="btn waves-effect waves-light blue" type="submit" id="btn-login" name="action">Login</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <button class="btn waves-effect waves-light blue" type="submit" id="btn-login" name="action">Login</button>
+                            </form>
                         </div>
                         <div class="card-action">
-                            <div class="row">
-                                <div class="col s12 m12 l12">
-                                    <a class="waves-effect btn grey lighten-5 grey-text text-darken-4" href="${url.context}/page/forgot-password">Forgot Password?</a>
+                            <a class="waves-effect btn grey lighten-5 grey-text text-darken-4" href="${url.context}/page/forgot-password">Forgot Password?</a>
 
-                                    <div id="forgotten-password" class="modal">
-                                        <h4 id="formResultH">Password Reset</h4>
-                                        <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
-                                            <div id="formResult" class="input-field col s12">
-                                                <input id="emailForgotten" type="text" name="email" required>
-                                                <label for="emailForgotten">Email or Username</label>
-                                            </div>
-                                            <button id="formBtn" class="waves-effect waves-light btn modal_close grey" type="submit" name="action">Confirm</button>
-                                        </form>
-                                        <div id="loading" class="progress" style="visibility:hidden;">
-                                            <div class="indeterminate"></div>
-                                        </div>
-                                        <p class="flow-text" id="formResultP"></p>
+                            <div id="forgotten-password" class="modal">
+                                <h4 id="formResultH">Password Reset</h4>
+                                <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
+                                    <div id="formResult" class="input-field col s12">
+                                        <input id="emailForgotten" type="text" name="email" required>
+                                        <label for="emailForgotten">Email or Username</label>
                                     </div>
+                                    <button id="formBtn" class="waves-effect waves-light btn modal_close grey" type="submit" name="action">Confirm</button>
+                                </form>
+                                <div id="loading" class="progress" style="visibility:hidden;">
+                                    <div class="indeterminate"></div>
+                                </div>
+                                <p class="flow-text" id="formResultP"></p>
+                            </div>
 
-                                    <div id="auth-error-modal" class="modal">
-                                        <div class="card-content">
-                                            <span class="card-title grey-text text-darken-4">Authentication Error</span>
-                                            <p class="flow-text">Your authentication details have not been recognized or Alfresco may not be available at this time.</p>
-                                        </div>
-                                        <div class="card-action">
-                                            <a href="#" class="waves-effect btn-flat grey-text text-darken-4 modal-close">Close</a>
-                                        </div>
-                                    </div>
-
+                            <div id="auth-error-modal" class="modal">
+                                <div class="card-content">
+                                    <span class="card-title grey-text text-darken-4">Authentication Error</span>
+                                    <p class="flow-text">Your authentication details have not been recognized or Alfresco may not be available at this time.</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#" class="waves-effect btn-flat grey-text text-darken-4 modal-close">Close</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
