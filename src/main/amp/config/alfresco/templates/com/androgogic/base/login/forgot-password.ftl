@@ -55,10 +55,11 @@
                                 </div>
                                 <button id="form-btn" class="btn waves-effect waves-light blue" type="submit" name="action">Send Instructions</button>
                             </form>
-                            <div id="loading" class="progress blue lighten-1" style="visibility:hidden;">
+                            <div id="loading" class="progress blue lighten-1" style="display:none;">
                                 <div class="indeterminate blue lighten-4"></div>
                             </div>
-                            <p id="form-result"></p>
+                            <p class="flow-text" id="form-result"></p>
+                            <p id="error"></p>
                         </div>
                         <div class="card-action">
                             <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Cancel</a>
@@ -124,10 +125,12 @@
 
             $( "#form-reset" ).submit(function( event ) {
                 event.preventDefault();
-                emptyDiv("#form-result");
+                emptyDiv('#form-result');
+                emptyDiv('#error');
                 $('#loading').show();
-                $('#form-btn').removeClass('disabled');
-                $('#form-btn').removeAttr('disabled');
+                $('#form-btn').attr('disabled','disabled');
+                $('#form-btn').removeClass('blue');
+                $('#form-btn').addClass('disabled');
                 var emailValue = $('#email').val();
                 $.ajax({
                    type: "POST",
@@ -136,15 +139,17 @@
                    contentType: "application/json; charset=utf-8",
                    dataType: "json",
                    success: function(result) {
-                        $('#form-btn').removeClass('blue').addClass('disabled');
-                        $('#form-btn').attr('disabled');
+                        $('#loading').hide();
+                        $('#form-btn').removeAttr("disabled");
+                        $('#form-btn').addClass('blue');
+                        $('#form-btn').removeClass('disabled');
                         $('#form-result').text('Please check your email.');
-                        $('loading').hide();
                    },
                    error: function(xhr, status, error) {
                         $('#loading').hide();
+                        $('#form-btn').removeAttr("disabled");
                         var err = eval("(" + xhr.responseText + ")");
-                        $('#form-result').text(err.message);
+                        $('#error').text(err.message);
                     }
                 });
             });
