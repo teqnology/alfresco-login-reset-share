@@ -82,15 +82,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col s12 m12 l12 text-center">
-                <div class="row">
-                </div>
-                <div class="row">
-                </div>
-            </div>
-        </div>
-
     </div>
 </main>
 
@@ -125,130 +116,129 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="${url.context}/js/materialize.min.js"></script>
 <script>
+    $(document).ready(function(){
 
+        var key = getUrlParameter('key');
+        var activitiId = getUrlParameter('activiti');
+        var email = getUrlParameter('email');
+        $.ajax({
+           type: "POST",
+           url: "/share/proxy/alfresco-noauth/andro/base/login/list-users",
+           data: JSON.stringify({ email: email, activiti: activitiId, key: key }),
+           contentType: "application/json; charset=utf-8",
+           dataType: "json",
+           success: function(result) {
+                if(result.users.length == 1){
+                    $.each(result.users, function() {
+                      $.each(this, function(name, value) {
+                        $('#user').append('<option value="'+ value + '" disabled selected>' + value + '</option>');
+                      });
+                    });
+                }else{
+                    $('#user').append('<option value="">Select username...</option>');
+                    $.each(result.users, function() {
+                      $.each(this, function(name, value) {
+                        $('#user').append('<option value="'+ value + '">' + value + '</option>');
+                      });
+                    });
+                }
+                $('select').material_select();
+           },
+           error: function(xhr, status, error) {
+                $('#user').append('<option value="" disabled selected>No valid username found...</option>');
+                $('#user').attr('disabled','disabled');
+                $('#user').addClass('disabled');
+                $('select').material_select();
+                var err = eval("(" + xhr.responseText + ")");
+                $('#error').text(err.message);
+            }
+        });
 
-        $(document).ready(function(){
+        $('.modal-trigger').leanModal({
+            dismissible: true,
+            opacity: .5,
+            in_duration: 300,
+            out_duration: 200,
+            complete: function() { emptyDiv('#form-result'); }
+        });
 
-            var key = getUrlParameter('key');
-            var activitiId = getUrlParameter('activitiId');
-            var email = getUrlParameter('email');
+        $('#form-reset').submit(function( event ) {
+            event.preventDefault();
+            emptyDiv('#form-result');
+            emptyDiv('#error');
+            $('#loading').show();
+            $('#user option').removeAttr('disabled');
+            $('#form-btn').attr('disabled','disabled');
+            $('#form-btn').removeClass('blue');
+            $('#form-btn').addClass('disabled');
+            var user = $('#user').val();
+            var pwd = $('#password').val();
+            alert(user);
             $.ajax({
                type: "POST",
-               url: "/share/proxy/alfresco-noauth/andro/base/login/list-users",
-               data: JSON.stringify({ email: email }),
+               url: "/share/proxy/alfresco-noauth/andro/base/login/reset-password",
+               data: JSON.stringify({ username: user, password: pwd, activiti: activitiId, key: key }),
                contentType: "application/json; charset=utf-8",
                dataType: "json",
                success: function(result) {
-                    if(result.users.length == 1){
-                        $.each(result.users, function() {
-                          $.each(this, function(name, value) {
-                            $('#user').append('<option value="'+ value + '" disabled selected>' + value + '</option>');
-                          });
-                        });
-                    }else{
-                        $('#user').append('<option value="">Select username...</option>');
-                        $.each(result.users, function() {
-                          $.each(this, function(name, value) {
-                            $('#user').append('<option value="'+ value + '">' + value + '</option>');
-                          });
-                        });
-                    }
-                    $('select').material_select();
+                    $('#loading').hide();
+                    $('#user option').attr('disabled','disabled');
+                    $('#form-result').text('Password updated. A confirmation email was sent to notify the password update.');
                },
                error: function(xhr, status, error) {
-                    $('#user').append('<option value="" disabled selected>No valid username found...</option>');
-                    $('#user').attr('disabled','disabled');
-                    $('#user').addClass('disabled');
-                    $('select').material_select();
+                    $('#loading').hide();
+                    $('#user option').attr('disabled','disabled');
+                    $('#form-btn').removeAttr('disabled');
+                    $('#form-btn').addClass('blue');
+                    $('#form-btn').removeClass('disabled');
                     var err = eval("(" + xhr.responseText + ")");
                     $('#error').text(err.message);
                 }
             });
-
-            $('.modal-trigger').leanModal({
-                dismissible: true,
-                opacity: .5,
-                in_duration: 300,
-                out_duration: 200,
-                complete: function() { emptyDiv('#form-result'); }
-            });
-
-            $('#form-reset').submit(function( event ) {
-                event.preventDefault();
-                emptyDiv('#form-result');
-                emptyDiv('#error');
-                $('#loading').show();
-                $('#form-btn').attr('disabled','disabled');
-                $('#form-btn').removeClass('blue');
-                $('#form-btn').addClass('disabled');
-                var user = $('#user').val();
-                var pwd = $('#password').val();
-                $.ajax({
-                   type: "POST",
-                   url: "/share/proxy/alfresco-noauth/andro/base/login/reset-password",
-                   data: JSON.stringify({ username: user, password: pwd, activiti: activitiId, key: key }),
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function(result) {
-                        $('#loading').hide();
-                        $('#form-btn').removeAttr('disabled');
-                        $('#form-btn').addClass('blue');
-                        $('#form-btn').removeClass('disabled');
-                        $('#form-result').text('Password updated. A confirmation email was sent to notify the password update.');
-                   },
-                   error: function(xhr, status, error) {
-                        $('#loading').hide();
-                        $('#form-btn').removeAttr('disabled');
-                        $('#form-btn').addClass('blue');
-                        $('#form-btn').removeClass('disabled');
-                        var err = eval("(" + xhr.responseText + ")");
-                        $('#error').text(err.message);
-                    }
-                });
-            });
-
-            function checkPass(){
-                var pwd = document.getElementById('password');
-                var pwd2 = document.getElementById('confirm-password');
-                if(!$('#user').is(':disabled')){
-                    if(pwd.value == pwd2.value){
-                        emptyDiv('#error');
-                        $('#form-btn').addClass('blue');
-                        $('#form-btn').removeClass('disabled');
-                        $('#form-btn').removeAttr('disabled');
-                    }else{
-                        $('#form-btn').attr('disabled','disabled');
-                        $('#form-btn').removeClass('blue');
-                        $('#form-btn').addClass('disabled');
-                        $('#error').text("Passwords do not match");
-                    }
-                }
-            }
-
-            $('#confirm-password').keyup(function() {
-                checkPass();
-                return false;
-            });
-
-            function emptyDiv(divElement){
-                $( divElement ).empty();
-            }
-
-            function getUrlParameter(sParam) {
-                var sPageURL = window.location.search.substring(1);
-                var sURLVariables = sPageURL.split('&');
-                for (var i = 0; i < sURLVariables.length; i++)
-                {
-                    var sParameterName = sURLVariables[i].split('=');
-                    if (sParameterName[0] == sParam)
-                    {
-                        return sParameterName[1];
-                    }
-                }
-            };
-
         });
-    </script>
+
+        function checkPass(){
+            var pwd = document.getElementById('password');
+            var pwd2 = document.getElementById('confirm-password');
+            if(!$('#user').is(':disabled')){
+                if(pwd.value == pwd2.value){
+                    emptyDiv('#error');
+                    $('#form-btn').addClass('blue');
+                    $('#form-btn').removeClass('disabled');
+                    $('#form-btn').removeAttr('disabled');
+                }else{
+                    $('#form-btn').attr('disabled','disabled');
+                    $('#form-btn').removeClass('blue');
+                    $('#form-btn').addClass('disabled');
+                    $('#error').text("Passwords do not match");
+                }
+            }
+        }
+
+        $('#confirm-password').keyup(function() {
+            checkPass();
+            return false;
+        });
+
+        function emptyDiv(divElement){
+            $( divElement ).empty();
+        }
+
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam)
+                {
+                    return sParameterName[1];
+                }
+            }
+        };
+
+    });
+</script>
 
 </body>
 
