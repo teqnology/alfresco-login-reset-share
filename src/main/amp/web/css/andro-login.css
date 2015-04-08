@@ -76,3 +76,12 @@ body {
 .input-field .prefix.active {
  color: #2196f3;
 }
+/* select box style */
+.dropdown-content li>a, .dropdown-content li>span {
+  display: block;
+  padding: 1rem 1rem;
+  color: #2196f3;
+}
+select:focus {
+  outline: 1px solid #2196f3;
+}

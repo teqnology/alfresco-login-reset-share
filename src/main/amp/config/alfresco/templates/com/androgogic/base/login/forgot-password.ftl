@@ -46,7 +46,7 @@
                             <span class="card-title grey-text text-darken-4">Forgot your password?</span>
                             <div class="divider blue"></div>
                             <p>We can send you details on how to reset it. Please enter your email address or the username you use to log into your account.</p>
-                            <form id="form-reset">
+                            <form id="form-forgot">
                                 <div class="row">
                                     <div id="form-label" class="input-field col s12">
                                         <input id="email" type="text" name="email" required>
@@ -54,12 +54,13 @@
                                     </div>
                                 </div>
                                 <button id="form-btn" class="btn waves-effect waves-light blue" type="submit" name="action">Send Instructions</button>
+                                <div class="row"></div>
                             </form>
                             <div id="loading" class="progress blue lighten-1" style="display:none;">
                                 <div class="indeterminate blue lighten-4"></div>
                             </div>
                             <p class="flow-text" id="form-result"></p>
-                            <p id="error"></p>
+                            <p id="error" class="orange-text text-darken-4"></p>
                         </div>
                         <div class="card-action">
                             <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Cancel</a>
@@ -111,19 +112,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${url.context}/js/materialize.min.js"></script>
     <script>
-
-
         $(document).ready(function(){
 
-            $('.modal-trigger').leanModal({
-                dismissible: true,
-                opacity: .5,
-                in_duration: 300,
-                out_duration: 200,
-                complete: function() { emptyDiv("#form-result"); }
-            });
-
-            $( "#form-reset" ).submit(function( event ) {
+            $('#form-forgot').submit(function( event ) {
                 event.preventDefault();
                 emptyDiv('#form-result');
                 emptyDiv('#error');
@@ -140,14 +131,16 @@
                    dataType: "json",
                    success: function(result) {
                         $('#loading').hide();
-                        $('#form-btn').removeAttr("disabled");
+                        $('#form-btn').removeAttr('disabled');
                         $('#form-btn').addClass('blue');
                         $('#form-btn').removeClass('disabled');
                         $('#form-result').text('Please check your email.');
                    },
                    error: function(xhr, status, error) {
                         $('#loading').hide();
-                        $('#form-btn').removeAttr("disabled");
+                        $('#form-btn').removeAttr('disabled');
+                        $('#form-btn').addClass('blue');
+                        $('#form-btn').removeClass('disabled');
                         var err = eval("(" + xhr.responseText + ")");
                         $('#error').text(err.message);
                     }
