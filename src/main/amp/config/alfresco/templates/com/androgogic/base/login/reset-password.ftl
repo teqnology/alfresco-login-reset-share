@@ -173,7 +173,6 @@
             $('#form-btn').addClass('disabled');
             var user = $('#user').val();
             var pwd = $('#password').val();
-            alert(user);
             $.ajax({
                type: "POST",
                url: "/share/proxy/alfresco-noauth/andro/base/login/reset-password",
