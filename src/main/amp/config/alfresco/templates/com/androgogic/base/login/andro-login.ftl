@@ -49,13 +49,13 @@
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12">
                                         <input id="username" name="username" type="text" required>
-                                        <label for="username">Username</label>
+                                        <label for="username" class="active">Username</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12">
                                         <input id="password" name="password" type="password" required>
-                                        <label for="password">Password</label>
+                                        <label for="password" class="active">Password</label>
                                     </div>
                                 </div>
                                 <button class="btn waves-effect waves-light blue" type="submit" id="btn-login" name="action">Login</button>

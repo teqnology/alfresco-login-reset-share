@@ -1,5 +1,5 @@
 <alfresco-config>
-   <config evaluator="string-compare" condition="WebFramework">
+    <config evaluator="string-compare" condition="WebFramework">
       <web-framework>
          <defaults>
             <page-type>
@@ -8,8 +8,9 @@
             </page-type>
          </defaults>
       </web-framework>
-   </config>
+    </config>
 
+    <!--
     <config evaluator="string-compare" condition="Remote">
         <remote>
             <endpoint>
@@ -50,5 +51,6 @@
             </endpoint>
         </remote>
     </config>
+    -->
 
 </alfresco-config>
