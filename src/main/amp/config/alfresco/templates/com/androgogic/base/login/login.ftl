@@ -6,7 +6,7 @@
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
     <link rel="stylesheet" type="text/css" href="${url.context}/css/materialize.min.css" >
-    <link rel="stylesheet" type="text/css" href="${url.context}/css/andro-login.css" >
+    <link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Raleway:200,600" />
 
 </head>
@@ -66,7 +66,7 @@
 
                             <div id="forgotten-password" class="modal">
                                 <h4 id="formResultH">Password Reset</h4>
-                                <form id="resetP" action="/share/proxy/alfresco-noauth/andro/base/reset-password" method="POST">
+                                <form id="resetP" action="/share/proxy/alfresco-noauth/androgogic/reset-password" method="POST">
                                     <div id="formResult" class="input-field col s12">
                                         <input id="emailForgotten" type="text" name="email" required>
                                         <label for="emailForgotten">Email or Username</label>
@@ -157,7 +157,7 @@
                 var emailF = $('#emailForgotten').val();
                 $.ajax({
                    type: "POST",
-                   url: "/share/proxy/alfresco-noauth/andro/base/reset-password",
+                   url: "/share/proxy/alfresco-noauth/androgogic/reset-password",
                    data: JSON.stringify({ email: emailF }),
                    contentType: "application/json; charset=utf-8",
                    dataType: "json",

@@ -7,7 +7,7 @@
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
     <link rel="stylesheet" type="text/css" href="${url.context}/css/materialize.min.css" >
-    <link rel="stylesheet" type="text/css" href="${url.context}/css/andro-login.css" >
+    <link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Raleway:200,600" />
 
 </head>
@@ -123,7 +123,7 @@
         var email = getUrlParameter('email');
         $.ajax({
            type: "POST",
-           url: "/share/proxy/alfresco-noauth/andro/base/login/list-users",
+           url: "/share/proxy/alfresco-noauth/androgogic/login/list-users",
            data: JSON.stringify({ email: email, activiti: activitiId, key: key }),
            contentType: "application/json; charset=utf-8",
            dataType: "json",
@@ -175,7 +175,7 @@
             var pwd = $('#password').val();
             $.ajax({
                type: "POST",
-               url: "/share/proxy/alfresco-noauth/andro/base/login/reset-password",
+               url: "/share/proxy/alfresco-noauth/androgogic/login/reset-password",
                data: JSON.stringify({ username: user, password: pwd, activiti: activitiId, key: key }),
                contentType: "application/json; charset=utf-8",
                dataType: "json",

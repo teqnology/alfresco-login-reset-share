@@ -1,12 +1,13 @@
 <alfresco-config>
 
-      <config evaluator="string-compare" condition="WebFramework">
-           <web-framework>
-               <autowire>
-                   <mode>development</mode>
-               </autowire>
-           </web-framework>
-       </config>
+    <config evaluator="string-compare" condition="WebFramework">
+        <web-framework>
+            <autowire>
+                <mode>development</mode>
+            </autowire>
+            <disable-resource-caching>true</disable-resource-caching>
+        </web-framework>
+    </config>
 
 
     <!-- Global config section -->
@@ -27,7 +28,7 @@
     <!-- Disable CSRF completely for now -->
     <!-- It seems Share has issues on 4.2.x with the embedded tomcat and CSRFPolicy -->
     <config evaluator="string-compare" condition="CSRFPolicy" replace="true">
-	<filter/>
+        <filter/>
     </config>
 
     <config evaluator="string-compare" condition="Remote">

@@ -7,7 +7,7 @@
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
     <link rel="stylesheet" type="text/css" href="${url.context}/css/materialize.min.css" >
-    <link rel="stylesheet" type="text/css" href="${url.context}/css/andro-login.css" >
+    <link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Raleway:200,600" />
 
 </head>
@@ -125,7 +125,7 @@
                 var emailValue = $('#email').val();
                 $.ajax({
                    type: "POST",
-                   url: "/share/proxy/alfresco-noauth/andro/base/login/forgot-password",
+                   url: "/share/proxy/alfresco-noauth/androgogic/login/forgot-password",
                    data: JSON.stringify({ email: emailValue }),
                    contentType: "application/json; charset=utf-8",
                    dataType: "json",
