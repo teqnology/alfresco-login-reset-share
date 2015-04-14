@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <theme>
-    <title>Andro Theme</title>
-    <title-id>theme.androTheme</title-id>
+    <title>Custom Theme</title>
+    <title-id>theme.customTheme</title-id>
     <css-tokens>
         <theme-font-family-1>arial,helvetica,clean,sans-serif</theme-font-family-1>
         <theme-font-family-2>arial,helvetica,clean,sans-serif</theme-font-family-2>

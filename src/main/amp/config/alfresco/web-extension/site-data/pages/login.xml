@@ -1,4 +1,4 @@
 <page>
-    <template-instance>andro-login</template-instance>
+    <template-instance>login</template-instance>
     <authentication>none</authentication>
 </page>
