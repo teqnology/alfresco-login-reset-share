@@ -16,17 +16,6 @@
         <version>2.0.0</version>
     </parent>
 
-    <!-- This is mandatory since the filtering currently causes maven build to fail -->
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/amp</directory>
-                <!-- This is relative to ${project.build.outputDirectory} -->
-                <targetPath>../${project.build.finalName}</targetPath>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
-    </build>
     <!--
        | SDK properties have sensible defaults in the SDK parent,
        | but you can override the properties below to use another version.
@@ -47,10 +36,11 @@
              Community versions are typically identified by major.minor.character (4.2.a),
              while Enterprise versions are identified by major.minor.digit (4.2.0)
         -->
-        <!--<alfresco.version>5.0.c</alfresco.version>-->
+        <alfresco.version>5.0.c</alfresco.version>
 
         <!-- Defines the log level used in log4j.properties -->
         <app.log.root.level>WARN</app.log.root.level>
+        <app.filtering.enabled>false</app.filtering.enabled>
 
     </properties>
 
@@ -102,4 +92,16 @@
             </dependencies>
         </profile>
     </profiles>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/amp</directory>
+                <!-- This is relative to ${project.build.outputDirectory} -->
+                <targetPath>../${project.build.finalName}</targetPath>
+                <filtering>${app.filtering.enabled}</filtering>
+            </resource>
+        </resources>
+    </build>
+
 </project>
