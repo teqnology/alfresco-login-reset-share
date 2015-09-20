@@ -2,8 +2,14 @@
 
     <config evaluator="string-compare" condition="WebFramework">
         <web-framework>
+            <defaults>
+                <page-type>
+                    <id>login</id>
+                    <page-instance-id>login</page-instance-id>
+                </page-type>
+            </defaults>
             <autowire>
-                <mode>development</mode>
+                <mode>production</mode>
             </autowire>
             <disable-resource-caching>true</disable-resource-caching>
         </web-framework>
@@ -38,7 +44,7 @@
                 <name>Alfresco - unauthenticated access</name>
                 <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>${alfresco.repo.url}/s</endpoint-url>
+                <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
                 <identity>none</identity>
             </endpoint>
 
@@ -47,7 +53,7 @@
                 <name>Alfresco - user access</name>
                 <description>Access to Alfresco Repository WebScripts that require user authentication</description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>${alfresco.repo.url}/s</endpoint-url>
+                <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
             </endpoint>
 
@@ -56,7 +62,7 @@
                 <name>Alfresco Feed</name>
                 <description>Alfresco Feed - supports basic HTTP authentication via the EndPointProxyServlet</description>
                 <connector-id>http</connector-id>
-                <endpoint-url>${alfresco.repo.url}/s</endpoint-url>
+                <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
                 <basic-auth>true</basic-auth>
                 <identity>user</identity>
             </endpoint>
@@ -66,10 +72,11 @@
                 <name>Activiti Admin UI - user access</name>
                 <description>Access to Activiti Admin UI, that requires user authentication</description>
                 <connector-id>activiti-admin-connector</connector-id>
-                <endpoint-url>${alfresco.repo.url}/activiti-admin</endpoint-url>
+                <endpoint-url>http://localhost:8080/alfresco/activiti-admin</endpoint-url>
                 <identity>user</identity>
             </endpoint>
         </remote>
     </config>
 </alfresco-config>
+
 
