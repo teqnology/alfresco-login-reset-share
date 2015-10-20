@@ -86,6 +86,10 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
+                <!-- nosuffix true is needed to prevent illegally formed XML syntax errors during js minify compilation -->
+                <configuration>
+                    <nosuffix>true</nosuffix>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
