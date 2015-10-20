@@ -2,7 +2,7 @@
 <html class="grey lighten-2">
 
 <head>
-    <title>Alfresco Forgot Password</title>
+    <title>Alfresco | Forgot Password</title>
 
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 

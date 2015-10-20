@@ -2,7 +2,7 @@
 <html class="grey lighten-2">
 
 <head>
-    <title>Alfresco Reset Password</title>
+    <title>Alfresco | Reset Password</title>
 
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
@@ -15,7 +15,7 @@
 <body>
 
     <#include "../include/andro-header.ftl" />
-    
+
     <main>
         <div class="container">
 
