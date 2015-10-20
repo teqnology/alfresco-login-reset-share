@@ -52,7 +52,7 @@
                             <p id="error" class="orange-text text-darken-4"></p>
                         </div>
                         <div class="card-action">
-                            <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Cancel</a>
+                            <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Back to login page</a>
                         </div>
                     </div>
                 </div>
