@@ -1,4 +1,4 @@
-<footer class="page-footer grey lighten-3">
+<!--<footer class="page-footer grey lighten-3">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -24,4 +24,4 @@
             <div class="clearfix"></div>
         </div>
     </div>
-</footer>
+</footer>-->
