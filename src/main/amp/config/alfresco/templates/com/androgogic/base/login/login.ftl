@@ -23,7 +23,7 @@
 
                                 <div class="mdl-card__media">
 
-                                    <img src="${url.context}/res/images/alfresco.png" width="100%" border="0" alt="logo">
+                                    <img src="${url.context}/res/images/logo.png" width="100%" border="0" alt="logo">
 
                                 </div>
 
