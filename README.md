@@ -3,27 +3,42 @@ Alfresco Custom Login - Share
 
 # Features
 
-- Brand new Alfresco Share login page based on [Material Design by Google](http://www.google.com/design/spec/material-design/introduction.html).
-- Front end framework based on a slightly modified version of [materialize.css](http://materializecss.com/). The GitHub project can be found [here](https://github.com/Dogfalo/materialize).
-- A new Alfresco Share "Forgot Password" page that allows users to input their emails or username registered against the repository. The extension will then send an email with the instructions (even if multiple users with the same email are found).
+- Three new pages (login, forgot-password and reset-password) based on [Material Design by Google](http://www.google.com/design/spec/material-design/introduction.html) directives.
+- Front end framework based on [getmdl.io](http://www.getmdl.io/). The GitHub project can be found [here](https://github.com/google/material-design-lite).
+- "Forgot Password" page `/share/page/forgot-password` allows users to input their emails or a username registered against the repository. The extension will then send an email with the instructions.
+- This extension can handle multiple users registered with the same email. In that case, a list of available users will be exposed on the reset-password page.
 - An Activiti workflow that is triggered for each valid request and a unique key ID.
-- A new Alfresco Share "Reset Password" page that will match the `activiti$id` and the unique key ID with the user, and will inject the list of available users (if multiple with the same email are found) in the reset password form.
+- "Reset Password" page `/share/page/reset-password` will match the `activiti$id` and the unique key ID with the user, and will inject the list of available users (if multiple with the same email are found) in the reset password form.
 - A list of repository tier back end web scripts that manage and handle all requests, send emails and return status messages for Share ftl pages to expose.
-- A scheduled action that ends all workflows that are part of unused password reset requests or older than 24 hours.
+- A scheduled action that ends all workflows that are part of unused password reset requests or older than 24 hours (runs every hour).
 
 This process will allow a more solid and secure approach to reset password requests.
-It replicates the current [Alfresco Cloud](https://my.alfresco.com/share/) behaviour.
-The main improvement over other Alfresco reset password extensions is that no plain text passwords are sent through emails.
-The user will be able to change it's own password as long as the `activiti$id`, the unique key ID and the email/username match.
-The Share login page will also call the Alfresco `/api/server` web script and allow users to see if the repository is available, instead of trying to login and being prompted with an annoying message.
+It tries to replicate the current [Alfresco Cloud](https://my.alfresco.com/share/) behaviour.
+The main improvement over other Alfresco reset password extensions is that no plain text passwords are sent through emails and it's able to manage multiple users registred with the same email.
+The user will be able to change it's own password as long as the `activiti$id`, the unique key ID and the email/username from the original request match.
+The Share login page will also call the Alfresco `/api/server` web script and allow users to see immediately if the repository is available, instead of trying to login and being prompted with an annoying message.
 
 # Essentials
 
 - Alfresco Enterprise/Community 5.x
-- Alfresco Maven SDK 2.0.0 ([Alfresco Maven compatibility matrix](http://docs.alfresco.com/5.0/concepts/alfresco-sdk-compatibility.html))
+- Alfresco Maven SDK 2.1.0 ([Alfresco Maven compatibility matrix](http://docs.alfresco.com/5.0/concepts/alfresco-sdk-compatibility.html))
 - [Alfresco Maven Enterprise account](http://docs.alfresco.com/5.0/concepts/alfresco-sdk-tutorials-alfresco-enterprise.html) (if using Enterprise artifacts, `pom.xml` needs to be changed accordingly).
 - `alfresco-login-reset-repo.amp` found [here](https://github.com/teqnology/alfresco-login-reset-repo)
 - `alfresco-login-reset-share.amp` found [here](https://github.com/teqnology/alfresco-login-reset-share)
+
+# Customization
+
+The material design, theme and style give the login page a minimal look, without breaking the look and feel too much with the current Alfresco default theme.
+There are some changes that can be make to make the pages more "custom":
+
+## Login form Alfresco logo
+
+The logo url is: `/share/res/images/logo.png` which means in order to change it you must update the logo.png file inside your:
+`webapps/share/images` folder.
+
+## Alfresco Community/Enterprise logo
+
+The logo url is: `/share/res/themes/default/images/logo.png`. This png file depends on the theme used, so just update the theme logo file.
 
 # Quickstart
 
