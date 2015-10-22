@@ -4,68 +4,100 @@
     Alfresco | Reset Password
 </@androHeader>
 
-        <main>
-            <div class="container">
+            <main class="mdl-layout__content">
+                <div class="page-content">
 
-                <div class="row">
-                    <div class="col s12 m12 l12 text-center">
-                        <div class="row">
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
+                    <div class="mdl-grid">
 
-                <div class="row">
-                    <div class="col l6 offset-l3 s12 m12">
-                        <div class="card z-depth-1">
-                            <div class="card-content">
-                                <span class="card-title grey-text text-darken-4">Reset your password</span>
-                                <div class="divider blue"></div>
-                                <p>Update your user password here. If the provided email has multiple accounts registered, a dropdown user selection will be available.</p>
-                                <form id="form-reset">
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <label>Username</label>
-                                            <select id="user" class="browser-default blue-text">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="password" type="password" name="password" required>
-                                            <label for="password">New Password</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="confirm-password" type="password" name="confirm-password" required>
-                                            <label for="confirm-password">Confirm password</label>
-                                        </div>
-                                    </div>
-                                    <button id="form-btn" class="btn waves-effect waves-light disabled" disabled type="submit" name="action">Reset Password</button>
-                                    <div class="row"></div>
-                                </form>
-                                <div id="loading" class="progress blue lighten-1" style="display:none;">
-                                    <div class="indeterminate blue lighten-4"></div>
+                        <div class="mdl-layout-spacer"></div>
+
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone mdl-typography--text-center">
+
+                            <div class="mdl-card mdl-shadow--6dp" style="width:100%;">
+
+                                <div class="mdl-card__title mdl-card--border">
+
+                                    <h2 class="mdl-card__title-text">Reset your password</h2>
+
                                 </div>
-                                <p class="flow-text" id="form-result"></p>
-                                <p id="error" class="orange-text text-darken-4"></p>
-                            </div>
-                            <div class="card-action">
-                                <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Back to login page</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </main>
+                                <div class="mdl-card__media">
+
+                                    <img src="${url.context}/res/images/logo.png" alt="logo">
+
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <p>Update your user password here. If the provided email has multiple accounts registered, a dropdown user selection will be available.</p>
+                                    </div>
+
+                                    <form id="form-reset">
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield">
+                                                <select class="mdl-textfield__input" id="user">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" name="password" type="password" id="password" required/>
+                                                <label class="mdl-textfield__label" for="password">New Password</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="form-label">
+                                                <input class="mdl-textfield__input" name="confirm-password" type="password" id="confirm-password" />
+                                                <label class="mdl-textfield__label" for="confirm-password">Confirm Password</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <!-- Accent-colored raised button with ripple -->
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" disabled type="submit" id="form-btn" name="action">
+                                                Reset Password
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <p id="form-result"></p>
+                                        <p id="error"></p>
+                                    </div>
+
+                                    <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display:none;"></div>
+
+                                </div>
+
+                                <div class="mdl-card__actions mdl-card--border">
+
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <!-- Accent-colored flat button -->
+                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}">Back to login page</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-layout-spacer"></div>
+
+                    </div>
+
+                </div>
+            </main>
+        </div>
 
         <#include "../include/andro-footer.ftl" />
 
-        <script src="${url.context}/js/materialize.min.js"></script>
-        <script src="${url.context}/js/materialize.min.js"></script>
+        <script src="${url.context}/js/jquery.min.js"></script>
+        <script src="${url.context}/js/material.js"></script>
         <script>
             $(document).ready(function(){
 
@@ -93,24 +125,14 @@
                               });
                             });
                         }
-                        $('select').material_select();
                    },
                    error: function(xhr, status, error) {
                         $('#user').append('<option value="" disabled selected>No valid username found...</option>');
                         $('#user').attr('disabled','disabled');
                         $('#user').addClass('disabled');
-                        $('select').material_select();
                         var err = eval("(" + xhr.responseText + ")");
                         $('#error').text(err.message);
                     }
-                });
-
-                $('.modal-trigger').leanModal({
-                    dismissible: true,
-                    opacity: .5,
-                    in_duration: 300,
-                    out_duration: 200,
-                    complete: function() { emptyDiv('#form-result'); }
                 });
 
                 $('#form-reset').submit(function( event ) {

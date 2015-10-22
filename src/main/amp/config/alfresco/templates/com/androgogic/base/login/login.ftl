@@ -42,7 +42,7 @@
 
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input class="mdl-textfield__input" name="password" type="text" id="password" />
+                                                <input class="mdl-textfield__input" name="password" type="password" id="password" />
                                                 <label class="mdl-textfield__label" for="password">Password</label>
                                             </div>
                                         </div>
@@ -56,13 +56,17 @@
 
                                     </form>
 
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <p id="error"></p>
+                                    </div>
+
                                 </div>
 
                                 <div class="mdl-card__actions mdl-card--border">
 
                                     <div class="mdl-cell mdl-cell--12-col">
                                         <!-- Accent-colored flat button -->
-                                        <a class="mdl-button mdl-js-button" href="${url.context}/page/forgot-password">Forgot Password?</a>
+                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}/page/forgot-password">Forgot Password?</a>
                                     </div>
 
                                 </div>
@@ -84,38 +88,7 @@
         <script src="${url.context}/js/material.js"></script>
         <script>
 
-            $( document ).ajaxStart(function() {
-              $( "#loading" ).show();
-            });
-
             $(document).ready(function(){
-
-                /*$(".modal-trigger").leanModal({
-                    dismissible: true,
-                    opacity: .5,
-                    in_duration: 300,
-                    out_duration: 200,
-                    complete: function() { emptyDiv("#formResultP"); }
-                });*/
-
-                $( "#resetP" ).submit(function( event ) {
-                    event.preventDefault();
-                    var emailF = $('#emailForgotten').val();
-                    $.ajax({
-                       type: "POST",
-                       url: "/share/proxy/alfresco-noauth/androgogic/reset-password",
-                       data: JSON.stringify({ email: emailF }),
-                       contentType: "application/json; charset=utf-8",
-                       dataType: "json",
-                       success: function(result) {
-                            $('#formResultP').text("Check your email.");
-                       },
-                       error: function(xhr, status, error) {
-                          var err = eval("(" + xhr.responseText + ")");
-                            $('#formResultP').text(err.message);
-                        }
-                    });
-                });
 
                 function emptyDiv(divElement){
                     $( divElement ).empty();
@@ -135,9 +108,9 @@
                 };
 
                 var error = getUrlParameter('error');
-                /*if (error == "true") {
-                     $('#auth-error-modal').openModal();
-                }*/
+                if (error == "true") {
+                    $('#error').text("Your authentication details have not been recognized or Alfresco may not be available at this time.");
+                }
 
             });
         </script>

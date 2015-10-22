@@ -38,7 +38,7 @@
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="form-label">
                                                 <input class="mdl-textfield__input" name="email" type="text" id="email" />
-                                                <label class="mdl-textfield__label" for="email">Emai or Username</label>
+                                                <label class="mdl-textfield__label" for="email">Email or Username</label>
                                             </div>
                                         </div>
 
@@ -51,13 +51,20 @@
 
                                     </form>
 
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <p id="form-result"></p>
+                                        <p id="error"></p>
+                                    </div>
+
+                                    <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display:none;"></div>
+
                                 </div>
 
                                 <div class="mdl-card__actions mdl-card--border">
 
                                     <div class="mdl-cell mdl-cell--12-col">
                                         <!-- Accent-colored flat button -->
-                                        <a class="mdl-button mdl-js-button" href="${url.context}">Back to login page</a>
+                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}">Back to login page</a>
                                     </div>
 
                                 </div>

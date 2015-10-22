@@ -13,7 +13,7 @@
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
     <link rel="stylesheet" type="text/css" href="${url.context}/css/material.css" >
-    <link rel="stylesheet" type="text/css" href="${url.context}/css/material.grey-deep_orange.min.css" >
+    <link rel="stylesheet" type="text/css" href="${url.context}/css/material.orange-indigo.min.css" >
     <link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/icon?family=Material+Icons" />
 
