@@ -156,6 +156,7 @@
                             $('#loading').hide();
                             $('#user option').attr('disabled','disabled');
                             $('#form-result').text('Password updated. A confirmation email was sent to notify the password update.');
+                            window.setInterval(function() {reloadPage()}, 2000);
                        },
                        error: function(xhr, status, error) {
                             $('#loading').hide();
@@ -191,6 +192,10 @@
                     checkPass();
                     return false;
                 });
+
+                function reloadPage(){
+                    window.location.assign("/share");
+                }
 
                 function emptyDiv(divElement){
                     $( divElement ).empty();
