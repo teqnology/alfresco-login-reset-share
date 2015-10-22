@@ -4,64 +4,79 @@
     Alfresco | Forgot Password
 </@androHeader>
 
-        <main>
-            <div class="container">
+            <main class="mdl-layout__content">
+                <div class="page-content">
 
-                <div class="row">
-                    <div class="col s12 m12 l12 text-center">
-                        <div class="row">
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
+                    <div class="mdl-grid">
 
-                <div class="row">
-                    <div class="col l6 offset-l3 s12 m12">
-                        <div class="card z-depth-1">
-                            <div class="card-content">
-                                <span class="card-title grey-text text-darken-4">Forgot your password?</span>
-                                <div class="divider blue"></div>
-                                <p>We can send you details on how to reset it. Please enter your email address or the username you use to log into your account.</p>
-                                <form id="form-forgot">
-                                    <div class="row">
-                                        <div id="form-label" class="input-field col s12">
-                                            <input id="email" type="text" name="email" required>
-                                            <label for="email">Email or Username</label>
-                                        </div>
-                                    </div>
-                                    <button id="form-btn" class="btn waves-effect waves-light blue" type="submit" name="action">Send Instructions</button>
-                                    <div class="row"></div>
-                                </form>
-                                <div id="loading" class="progress blue lighten-1" style="display:none;">
-                                    <div class="indeterminate blue lighten-4"></div>
+                        <div class="mdl-layout-spacer"></div>
+
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone mdl-typography--text-center">
+
+                            <div class="mdl-card mdl-shadow--6dp" style="width:100%;">
+
+                                <div class="mdl-card__title mdl-card--border">
+
+                                    <h2 class="mdl-card__title-text">Forgot your password?</h2>
+
                                 </div>
-                                <p class="flow-text" id="form-result"></p>
-                                <p id="error" class="orange-text text-darken-4"></p>
-                            </div>
-                            <div class="card-action">
-                                <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Back to login page</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col s12 m12 l12 text-center">
-                        <div class="row">
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
+                                <div class="mdl-card__media">
 
-            </div>
-        </main>
+                                    <img src="${url.context}/res/images/logo.png" alt="logo">
+
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <p>We can send you details on how to reset it. Please enter your email address or the username you use to log into your account.</p>
+                                    </div>
+
+                                    <form id="form-forgot">
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="form-label">
+                                                <input class="mdl-textfield__input" name="email" type="text" id="email" />
+                                                <label class="mdl-textfield__label" for="email">Emai or Username</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <!-- Accent-colored raised button with ripple -->
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" id="form-btn" name="action">
+                                                Send Instructions
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                                <div class="mdl-card__actions mdl-card--border">
+
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <!-- Accent-colored flat button -->
+                                        <a class="mdl-button mdl-js-button" href="${url.context}">Back to login page</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-layout-spacer"></div>
+
+                    </div>
+
+                </div>
+            </main>
+        </div>
 
         <#include "../include/andro-footer.ftl" />
 
         <script src="${url.context}/js/jquery.min.js"></script>
-        <script src="${url.context}/js/materialize.min.js"></script>
+        <script src="${url.context}/js/material.js"></script>
         <script>
             $(document).ready(function(){
 

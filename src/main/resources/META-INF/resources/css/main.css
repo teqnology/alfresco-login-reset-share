@@ -16,7 +16,16 @@
  */
 
 /* Button style */
-#btn-login{
-   width: 300px;
+#btn-login, #form-btn {
+   width:300px;
    max-width:100%;
+}
+
+/* Card style */
+.mdl-card__media {
+    background-color:#FFFFFF;
+}
+
+mdl-card__media img {
+    max-width:100%;
 }
