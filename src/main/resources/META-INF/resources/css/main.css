@@ -14,3 +14,9 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
  */
+
+/* Button style */
+#btn-login{
+   width: 300px;
+   max-width:100%;
+}

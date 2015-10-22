@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="${url.context}/css/material.css" >
     <link rel="stylesheet" type="text/css" href="${url.context}/css/material.grey-deep_orange.min.css" >
-    <!--<link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >-->
+    <link rel="stylesheet" type="text/css" href="${url.context}/css/main.css" >
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/icon?family=Material+Icons" />
 
     <script type="text/javascript">
@@ -29,7 +29,7 @@
 
 <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title"><a href="${url.context}" class="brand-logo"><img src="${url.context}/res/themes/default/images/logo.png"></a></span>
