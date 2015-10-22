@@ -92,9 +92,10 @@
 
                 </div>
             </main>
-        </div>
 
-        <#include "../include/andro-footer.ftl" />
+            <#include "../include/andro-footer.ftl" />
+
+        </div>
 
         <script src="${url.context}/js/jquery.min.js"></script>
         <script src="${url.context}/js/material.js"></script>

@@ -80,9 +80,11 @@
 
                 </div>
             </main>
+
+            <#include "../include/andro-footer.ftl" />
+
         </div>
 
-        <#include "../include/andro-footer.ftl" />
 
         <script src="${url.context}/js/jquery.min.js"></script>
         <script src="${url.context}/js/material.js"></script>
