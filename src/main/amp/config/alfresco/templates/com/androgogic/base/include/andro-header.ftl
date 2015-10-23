@@ -37,7 +37,7 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="${url.context}"> Alfresco ${srv.data.edition} - Version ${srv.data.version} </a>
+                <a class="mdl-navigation__link" href="${url.context}"> ${msg("andro.page.header.alfresco")} ${srv.data.edition} - ${msg("andro.page.header.version")} ${srv.data.version} </a>
             </nav>
         </div>
     </header>

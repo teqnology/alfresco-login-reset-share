@@ -1,0 +1,15 @@
+<extension>
+    <modules>
+        <module>
+            <id>Androgogic - Material Footer</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.footer</targetPackageRoot>
+                    <sourcePackageRoot>com.androgogic.base.footer.template</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+    </modules>
+</extension>

@@ -1,7 +1,7 @@
 <#include "../include/andro-header.ftl" />
 
 <@androHeader>
-    Alfresco | Forgot Password
+    ${msg("andro.page.forgotpassword.title")}
 </@androHeader>
 
             <main class="mdl-layout__content">
@@ -17,7 +17,7 @@
 
                                 <div class="mdl-card__title mdl-card--border">
 
-                                    <h2 class="mdl-card__title-text">Forgot your password?</h2>
+                                    <h2 class="mdl-card__title-text">${msg("andro.page.forgotpassword.form.title")}</h2>
 
                                 </div>
 
@@ -30,7 +30,7 @@
                                 <div class="mdl-card__supporting-text">
 
                                     <div class="mdl-cell mdl-cell--12-col">
-                                        <p>We can send you details on how to reset it. Please enter your email address or the username you use to log into your account.</p>
+                                        <p>${msg("andro.page.forgotpassword.form.description")}</p>
                                     </div>
 
                                     <form id="form-forgot">
@@ -38,14 +38,14 @@
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="form-label">
                                                 <input class="mdl-textfield__input" name="email" type="text" id="email" />
-                                                <label class="mdl-textfield__label" for="email">Email or Username</label>
+                                                <label class="mdl-textfield__label" for="email">${msg("andro.page.forgotpassword.form.account")}</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <!-- Accent-colored raised button with ripple -->
                                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" id="form-btn" name="action">
-                                                Send Instructions
+                                                ${msg("andro.page.forgotpassword.form.send")}
                                             </button>
                                         </div>
 
@@ -64,7 +64,7 @@
 
                                     <div class="mdl-cell mdl-cell--12-col">
                                         <!-- Accent-colored flat button -->
-                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}">Back to login page</a>
+                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}">${msg("andro.page.forgotpassword.form.back")}</a>
                                     </div>
 
                                 </div>

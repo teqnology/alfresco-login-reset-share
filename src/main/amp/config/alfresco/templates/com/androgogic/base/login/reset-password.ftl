@@ -1,7 +1,7 @@
 <#include "../include/andro-header.ftl" />
 
 <@androHeader>
-    Alfresco | Reset Password
+
 </@androHeader>
 
             <main class="mdl-layout__content">
@@ -17,7 +17,7 @@
 
                                 <div class="mdl-card__title mdl-card--border">
 
-                                    <h2 class="mdl-card__title-text">Reset your password</h2>
+                                    <h2 class="mdl-card__title-text">${msg("andro.page.resetpassword.form.title")}</h2>
 
                                 </div>
 
@@ -30,7 +30,7 @@
                                 <div class="mdl-card__supporting-text">
 
                                     <div class="mdl-cell mdl-cell--12-col">
-                                        <p>Update your user password here. If the provided email has multiple accounts registered, a dropdown user selection will be available.</p>
+                                        <p>${msg("andro.page.resetpassword.form.description")}</p>
                                     </div>
 
                                     <form id="form-reset">
@@ -45,21 +45,21 @@
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                                 <input class="mdl-textfield__input" name="password" type="password" id="password" required/>
-                                                <label class="mdl-textfield__label" for="password">New Password</label>
+                                                <label class="mdl-textfield__label" for="password">${msg("andro.page.resetpassword.form.newpassword")}</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="form-label">
                                                 <input class="mdl-textfield__input" name="confirm-password" type="password" id="confirm-password" />
-                                                <label class="mdl-textfield__label" for="confirm-password">Confirm Password</label>
+                                                <label class="mdl-textfield__label" for="confirm-password">${msg("andro.page.resetpassword.form.confirmpassword")}</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <!-- Accent-colored raised button with ripple -->
                                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" disabled type="submit" id="form-btn" name="action">
-                                                Reset Password
+                                                ${msg("andro.page.resetpassword.form.confirm")}
                                             </button>
                                         </div>
 
@@ -78,7 +78,7 @@
 
                                     <div class="mdl-cell mdl-cell--12-col">
                                         <!-- Accent-colored flat button -->
-                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}">Back to login page</a>
+                                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="${url.context}"> ${msg("andro.page.resetpassword.form.back")}</a>
                                     </div>
 
                                 </div>
@@ -128,7 +128,7 @@
                         }
                    },
                    error: function(xhr, status, error) {
-                        $('#user').append('<option value="" disabled selected>No valid username found...</option>');
+                        $('#user').append('<option value="" disabled selected>${msg("andro.page.resetpassword.form.nousername")}</option>');
                         $('#user').attr('disabled','disabled');
                         $('#user').addClass('disabled');
                         var err = eval("(" + xhr.responseText + ")");
@@ -156,7 +156,7 @@
                        success: function(result) {
                             $('#loading').hide();
                             $('#user option').attr('disabled','disabled');
-                            $('#form-result').text('Password updated. A confirmation email was sent to notify the password update.');
+                            $('#form-result').text('${msg("andro.page.resetpassword.form.password.update")}');
                             window.setInterval(function() {reloadPage()}, 2000);
                        },
                        error: function(xhr, status, error) {
@@ -184,7 +184,7 @@
                             $('#form-btn').attr('disabled','disabled');
                             $('#form-btn').removeClass('blue');
                             $('#form-btn').addClass('disabled');
-                            $('#error').text("Passwords do not match");
+                            $('#error').text('${msg("andro.page.resetpassword.form.password.nomatch")}');
                         }
                     }
                 }
