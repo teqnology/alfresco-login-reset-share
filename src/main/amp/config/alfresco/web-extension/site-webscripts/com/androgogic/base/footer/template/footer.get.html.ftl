@@ -1,8 +1,8 @@
-<@markup id="material-css" target="css" action="before">
-    <@link rel="stylesheet" type="text/css" href="${url.context}/res/css/material.css" />
+<@markup id="material-css" target="css" action="after">
+    <@link rel="stylesheet" type="text/css" href="${url.context}/res/css/footer/andro-footer.css" />
 </@>
 
-<@markup id="material-js" target="js" action="before">
+<@markup id="material-js" target="js" action="after">
     <@script src="${url.context}/res/js/jquery.min.js" />
     <@script src="${url.context}/res/js/material.js" />
 </@>

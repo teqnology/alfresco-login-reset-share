@@ -1,0 +1,87 @@
+.mdl-logo {
+  margin-bottom: 16px;
+  color: white; }
+
+@media screen and (min-width: 760px) {
+  .mdl-logo {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 16px; } }
+
+.mdl-mini-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 32px 16px;
+  color: rgb(158,158,158);
+  background-color: rgb(66,66,66); }
+  .mdl-mini-footer:after {
+    content: '';
+    display: block; }
+  .mdl-mini-footer .mdl-logo {
+    line-height: 36px; }
+
+.mdl-mini-footer--link-list,
+.mdl-mini-footer__link-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .mdl-mini-footer--link-list li,
+  .mdl-mini-footer__link-list li {
+    margin-bottom: 0;
+    margin-right: 16px; }
+    @media screen and (min-width: 760px) {
+      .mdl-mini-footer--link-list li,
+      .mdl-mini-footer__link-list li {
+        line-height: 36px; } }
+  .mdl-mini-footer--link-list a,
+  .mdl-mini-footer__link-list a {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap; }
+
+.mdl-mini-footer--left-section,
+.mdl-mini-footer__left-section {
+  display: inline-block;
+  -webkit-box-ordinal-group: 1;
+  -webkit-order: 0;
+      -ms-flex-order: 0;
+          order: 0; }
+
+.mdl-mini-footer--right-section,
+.mdl-mini-footer__right-section {
+  display: inline-block;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.mdl-mini-footer--social-btn,
+.mdl-mini-footer__social-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(158,158,158);
+  border: none; }
+
+.sticky-wrapper {
+    margin: 0px auto -100px; }
+
+.sticky-footer, .sticky-push{
+  height: 100px; }
