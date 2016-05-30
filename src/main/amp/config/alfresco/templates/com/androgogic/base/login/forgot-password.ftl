@@ -112,6 +112,15 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${url.context}/js/materialize.min.js"></script>
     <script>
+    function getErrorMessage(xhr, error) {
+        try {
+            var response = JSON.parse(xhr.responseText);
+            return response.message;
+        } catch(e) {
+            return error;
+        }
+    }
+
     $(document).ready(function(){
 
         $('#form-forgot').submit(function( event ) {
@@ -141,7 +150,7 @@
                     $('#form-btn').removeAttr('disabled');
                     $('#form-btn').addClass('blue');
                     $('#form-btn').removeClass('disabled');
-                    $('#error').text(error);
+                    $('#error').text(getErrorMessage(xhr, error));
                 }
             });
         });

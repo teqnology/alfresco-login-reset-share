@@ -116,19 +116,28 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="${url.context}/js/materialize.min.js"></script>
 <script>
+    function getErrorMessage(xhr, error) {
+        try {
+            var response = JSON.parse(xhr.responseText);
+            return response.message;
+        } catch(e) {
+            return error;
+        }
+    }
+
     $(document).ready(function(){
 
         var key = getUrlParameter('key');
         var activitiId = getUrlParameter('activiti');
         var email = getUrlParameter('email');
+        var user = getUrlParameter('user');
         $.ajax({
             type: "POST",
             url: "/share/proxy/alfresco-noauth/androgogic/login/list-users",
-            data: JSON.stringify({ email: email, activiti: activitiId, key: key }),
+            data: JSON.stringify({ email: email, user: user, activiti: activitiId, key: key }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(result) {
-                console.log(result.users);
                 if(result.users.length == 1){
                     $.each(result.users, function() {
                         $.each(this, function(name, value) {
@@ -152,7 +161,7 @@
                 $('#password').attr('disabled','disabled');
                 $('#confirm-password').attr('disabled','disabled');
                 $('select').material_select();
-                $('#error').text(error);
+                $('#error').text(getErrorMessage(xhr, error));
             }
         });
 
@@ -184,7 +193,7 @@
                 success: function(result) {
                     $('#loading').hide();
                     $('#user option').attr('disabled','disabled');
-                    $('#form-result').text("${msg('resetPage.passwordUpdated')}");
+                    $('#form-result').text('${msg("resetPage.passwordUpdated")}');
                 },
                 error: function(xhr, status, error) {
                     $('#loading').hide();
@@ -192,7 +201,7 @@
                     $('#form-btn').removeAttr('disabled');
                     $('#form-btn').addClass('blue');
                     $('#form-btn').removeClass('disabled');
-                    $('#error').text(error);
+                    $('#error').text(getErrorMessage(xhr, error));
                 }
             });
         });
@@ -210,7 +219,7 @@
                     $('#form-btn').attr('disabled','disabled');
                     $('#form-btn').removeClass('blue');
                     $('#form-btn').addClass('disabled');
-                    $('#error').text("${msg('resetPage.passwordMismatch')}");
+                    $('#error').text('${msg("resetPage.passwordMismatch")}');
                 }
             }
         }
