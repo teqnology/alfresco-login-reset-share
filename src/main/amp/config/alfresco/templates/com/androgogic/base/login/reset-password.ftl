@@ -2,7 +2,7 @@
 <html class="grey lighten-2">
 
 <head>
-    <title>Alfresco Reset Password</title>
+    <title>Alfresco - ${msg("resetPage.pageTitle")}</title>
 
     <link rel="icon" href="${url.context}/res/favicon.ico" type="image/png">
 
@@ -43,30 +43,30 @@
             <div class="col l6 offset-l3 s12 m12">
                 <div class="card z-depth-1">
                     <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Reset your password</span>
+                        <span class="card-title grey-text text-darken-4">${msg("resetPage.title")}</span>
                         <div class="divider blue"></div>
-                        <p>Update your user password here. If the provided email has multiple accounts registered, a dropdown user selection will be available.</p>
+                        <p>${msg("resetPage.text")}</p>
                         <form id="form-reset">
                             <div class="row">
-                                <div class="col s12">
-                                    <label>Username</label>
-                                    <select id="user" class="browser-default blue-text">
+                                <div class="input-field col s12">
+                                    <select id="user" class="blue-text">
                                     </select>
+                                    <label>${msg("resetPage.usernameLabel")}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="password" type="password" name="password" required>
-                                    <label for="password">New Password</label>
+                                    <label for="password">${msg("resetPage.newpassLabel")}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="confirm-password" type="password" name="confirm-password" required>
-                                    <label for="confirm-password">Confirm password</label>
+                                    <label for="confirm-password">${msg("resetPage.newpassConfirmLabel")}</label>
                                 </div>
                             </div>
-                            <button id="form-btn" class="btn waves-effect waves-light disabled" disabled type="submit" name="action">Reset Password</button>
+                            <button id="form-btn" class="btn waves-effect waves-light disabled" disabled type="submit" name="action">${msg("resetPage.submitButton")}</button>
                             <div class="row"></div>
                         </form>
                         <div id="loading" class="progress blue lighten-1" style="display:none;">
@@ -76,7 +76,7 @@
                         <p id="error" class="orange-text text-darken-4"></p>
                     </div>
                     <div class="card-action">
-                        <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">Back to login page</a>
+                        <a href="${url.context}" class="waves-effect btn grey lighten-5 grey-text text-darken-4" type="submit" name="action">${msg("resetPage.backtologinButton")}</a>
                     </div>
                 </div>
             </div>
@@ -116,41 +116,52 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="${url.context}/js/materialize.min.js"></script>
 <script>
+    function getErrorMessage(xhr, error) {
+        try {
+            var response = JSON.parse(xhr.responseText);
+            return response.message;
+        } catch(e) {
+            return error;
+        }
+    }
+
     $(document).ready(function(){
 
         var key = getUrlParameter('key');
         var activitiId = getUrlParameter('activiti');
         var email = getUrlParameter('email');
+        var user = getUrlParameter('user');
         $.ajax({
-           type: "POST",
-           url: "/share/proxy/alfresco-noauth/androgogic/login/list-users",
-           data: JSON.stringify({ email: email, activiti: activitiId, key: key }),
-           contentType: "application/json; charset=utf-8",
-           dataType: "json",
-           success: function(result) {
+            type: "POST",
+            url: "/share/proxy/alfresco-noauth/androgogic/login/list-users",
+            data: JSON.stringify({ email: email, user: user, activiti: activitiId, key: key }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(result) {
                 if(result.users.length == 1){
                     $.each(result.users, function() {
-                      $.each(this, function(name, value) {
-                        $('#user').append('<option value="'+ value + '" disabled selected>' + value + '</option>');
-                      });
+                        $.each(this, function(name, value) {
+                            $('#user').append('<option value="'+ value + '" selected>' + value + '</option>');
+                        });
                     });
                 }else{
-                    $('#user').append('<option value="">Select username...</option>');
+                    $('#user').append('<option value="" disabled selected>${msg("resetPage.selectUsername")}</option>');
                     $.each(result.users, function() {
-                      $.each(this, function(name, value) {
-                        $('#user').append('<option value="'+ value + '">' + value + '</option>');
-                      });
+                        $.each(this, function(name, value) {
+                            $('#user').append('<option value="'+ value + '">' + value + '</option>');
+                        });
                     });
                 }
                 $('select').material_select();
-           },
-           error: function(xhr, status, error) {
-                $('#user').append('<option value="" disabled selected>No valid username found...</option>');
+            },
+            error: function(xhr, status, error) {
+                $('#user').append('<option value="" disabled selected>${msg("resetPage.noValidUsername")}</option>');
                 $('#user').attr('disabled','disabled');
                 $('#user').addClass('disabled');
+                $('#password').attr('disabled','disabled');
+                $('#confirm-password').attr('disabled','disabled');
                 $('select').material_select();
-                var err = eval("(" + xhr.responseText + ")");
-                $('#error').text(err.message);
+                $('#error').text(getErrorMessage(xhr, error));
             }
         });
 
@@ -174,43 +185,42 @@
             var user = $('#user').val();
             var pwd = $('#password').val();
             $.ajax({
-               type: "POST",
-               url: "/share/proxy/alfresco-noauth/androgogic/login/reset-password",
-               data: JSON.stringify({ username: user, password: pwd, activiti: activitiId, key: key }),
-               contentType: "application/json; charset=utf-8",
-               dataType: "json",
-               success: function(result) {
+                type: "POST",
+                url: "/share/proxy/alfresco-noauth/androgogic/login/reset-password",
+                data: JSON.stringify({ username: user, password: pwd, activiti: activitiId, key: key }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(result) {
                     $('#loading').hide();
                     $('#user option').attr('disabled','disabled');
-                    $('#form-result').text('Password updated. A confirmation email was sent to notify the password update.');
-               },
-               error: function(xhr, status, error) {
+                    $('#form-result').text('${msg("resetPage.passwordUpdated")}');
+                },
+                error: function(xhr, status, error) {
                     $('#loading').hide();
                     $('#user option').attr('disabled','disabled');
                     $('#form-btn').removeAttr('disabled');
                     $('#form-btn').addClass('blue');
                     $('#form-btn').removeClass('disabled');
-                    var err = eval("(" + xhr.responseText + ")");
-                    $('#error').text(err.message);
+                    $('#error').text(getErrorMessage(xhr, error));
                 }
             });
         });
 
         function checkPass(){
-            var pwd = document.getElementById('password');
-            var pwd2 = document.getElementById('confirm-password');
+            var pwd = document.getElementById('password');
+            var pwd2 = document.getElementById('confirm-password');
             if(!$('#user').is(':disabled')){
-                if(pwd.value == pwd2.value){
+                if(pwd.value == pwd2.value){
                     emptyDiv('#error');
                     $('#form-btn').addClass('blue');
                     $('#form-btn').removeClass('disabled');
                     $('#form-btn').removeAttr('disabled');
-                }else{
+                }else{
                     $('#form-btn').attr('disabled','disabled');
                     $('#form-btn').removeClass('blue');
                     $('#form-btn').addClass('disabled');
-                    $('#error').text("Passwords do not match");
-                }
+                    $('#error').text('${msg("resetPage.passwordMismatch")}');
+                }
             }
         }
 
